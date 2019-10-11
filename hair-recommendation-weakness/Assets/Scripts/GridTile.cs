@@ -76,7 +76,7 @@ public class GridTile : MonoBehaviour
 	
 	
     
-    void SetState(GridState newState){
+    public void SetState(GridState newState){
     	State = newState;
     	SetupState();
     }
