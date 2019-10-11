@@ -69,6 +69,31 @@ public class HajGrid : MonoBehaviour
 				
 				instance.transform.rotation = Quaternion.FromToRotation (transform.up, spherePos.normalized) * instance.transform.rotation;
 			
+				
+				var gridTile = instance.GetComponent<GridTile>();
+				
+				var gridState = GridTile.GridState.Empty;
+				
+				if(Mathf.Approximately(i, fromXAngle)){
+					gridState = GridTile.GridState.TechnicalNode;
+				}
+								
+				if(Mathf.Approximately(i, toXAngle)){
+					gridState = GridTile.GridState.TechnicalNode;
+				}
+								
+				if(Mathf.Approximately(j, fromYAngle)){
+					gridState = GridTile.GridState.TechnicalNode;
+				}
+							
+				if(Mathf.Approximately(j, toYAngle)){
+					gridState = GridTile.GridState.TechnicalNode;
+				}
+				
+				gridTile.State = gridState;
+				
+				Debug.Log(gridTile.State);
+				
 				Grids[arri, arrj] = instance;
 				arrj++;
 			}
@@ -76,7 +101,6 @@ public class HajGrid : MonoBehaviour
 			arri++;
 		}
 	}
-	
 	
 
 	// Update is called once per frame
