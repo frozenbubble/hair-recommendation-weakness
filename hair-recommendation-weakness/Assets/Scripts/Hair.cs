@@ -16,6 +16,16 @@ public class Hair : MonoBehaviour
     [SerializeField]
     private float _tickInterval = 10f;
 
+    public void Trim(int height)
+    {
+        var currentScale = _hairBody.transform.localScale;
+        var currentPos = _hairBody.transform.localPosition;
+        var newScale = new Vector3(currentScale.x, height, currentScale.z);
+        var newPos = new Vector3(transform.position.x, transform.position.y + height, transform.position.z);
+        _hairBody.transform.localScale = newScale;
+        //_hairBody.transform.localPosition = 
+    }
+
     void Start()
     {
         transform.Rotate(transform.right, Random.Range(-_maxAngle, _maxAngle));
