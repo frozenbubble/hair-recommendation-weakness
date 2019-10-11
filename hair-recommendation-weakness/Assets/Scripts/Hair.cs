@@ -18,12 +18,13 @@ public class Hair : MonoBehaviour
 
     public void Trim(int height)
     {
-        var currentScale = _hairBody.transform.localScale;
         var currentPos = _hairBody.transform.localPosition;
-        var newScale = new Vector3(currentScale.x, height, currentScale.z);
-        var newPos = new Vector3(transform.position.x, transform.position.y + height, transform.position.z);
-        _hairBody.transform.localScale = newScale;
-        //_hairBody.transform.localPosition = 
+        
+        while (_hairBody.transform.localScale.y > height)
+        {
+            _hairBody.transform.localScale -= Vector3.up;
+            _hairBody.transform.localPosition = new Vector3(currentPos.x, currentPos.y - 1, currentPos.z);
+        }
     }
 
     void Start()
@@ -42,14 +43,11 @@ public class Hair : MonoBehaviour
     {
         while (true)
         {
-            if (true)
-            {
-                yield return new WaitForSeconds(_tickInterval);
-                var currentPos = _hairBody.transform.localPosition;
+            yield return new WaitForSeconds(_tickInterval);
+            var currentPos = _hairBody.transform.localPosition;
 
-                _hairBody.transform.localScale += Vector3.up;
-                _hairBody.transform.localPosition = new Vector3(currentPos.x, currentPos.y + 1, currentPos.z);
-            }
+            _hairBody.transform.localScale += Vector3.up;
+            _hairBody.transform.localPosition = new Vector3(currentPos.x, currentPos.y + 1, currentPos.z);
         }
     }
 }
