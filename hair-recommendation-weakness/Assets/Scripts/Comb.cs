@@ -23,7 +23,7 @@ public class Comb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_target is null)
+        if (_target == null)
         {
             return;
         }
