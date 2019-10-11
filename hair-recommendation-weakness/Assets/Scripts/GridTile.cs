@@ -31,7 +31,7 @@ public class GridTile : MonoBehaviour
 	
 	public float nextKorpaLevelInSec = 0.0f;
 	
-	private float baseWaitSec = 4.0f;
+	private float baseWaitSec = 1.0f;
 	
 	
     // Start is called before the first frame update
@@ -70,7 +70,7 @@ public class GridTile : MonoBehaviour
 	
 	
 	
-	void ClearKorpa(){
+	public void ClearKorpa(){
 		SetKorpaLevel(0);
 	}
 	
@@ -92,7 +92,7 @@ public class GridTile : MonoBehaviour
     	}
     	
     	
-    	if(newLevel == 1){
+    	if(newLevel == 0){
     		em.rateOverTime = 0;
     		nextKorpaLevelInSec = 2*Random.Range(baseWaitSec, baseWaitSec + 4.5f);
     	}
